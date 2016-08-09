@@ -146,7 +146,55 @@ This action is available only to  **TODO** role.
 
     + Body
 
+#######################
+# Group Service Recipient
+#######################
 
+## Service Recipient Collection [/servicerecipients]
+
+### List Service Recipients [GET /servicerecipients{?searchQuery,page,pageSize,sort,sortorder,report}]
+Search for service recipients.
+
+This action works exactly as [VMP List Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor-collection/list-vendor), with the only difference that only
+Vendors classified as DPP_SVCREC will be returned.
+
+**TODO: double-check, why this exists then?**
+
+This action is available only to **TODO** role.
+
+### Create Service Recipient [POST]
+Creates a service recipient. This action works exactly as [VMP Create Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor-collection/create-vendor), 
+with the only difference that it will fail if one tries to create a Vendor which is not classified as DPP_SVCREC. 
+
+**TODO: double-check, why this exists then?**
+
+This action is available only to **TODO** role.
+
+## Service Recipient [/servicerecipients/{id}]
+
+### Read Service Recipient [GET]
+Reads a service recipient. This action works exactly as [VMP Read Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/read-vendor), 
+with the only difference that only Vendors classified as DPP_SVCREC will be returned. 
+
+**TODO: double-check, why this exists then?**
+
+This action is available only to **TODO** role.
+
+### Update Service Recipient [PUT]
+Updates a service recipient. This action works exactly as [VMP Update Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/update-vendor), 
+with the only difference that it will fail if one tries to update a Vendor which is not classified as DPP_SVCREC. 
+
+**TODO: double-check, why this exists then?**
+
+This action is available only to **TODO** role.
+
+### Delete Service Recipient [DELETE]
+Deletes a service recipient. This action works exactly as [VMP Delete Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/delete-vendor), 
+with the only difference that it will fail if one tries to delete a Vendor which is not classified as DPP_SVCREC. 
+
+**TODO: double-check, why this exists then?**
+
+This action is available only to **TODO** role.
 
 #######################
 # Data Structures
