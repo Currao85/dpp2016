@@ -1,80 +1,201 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://emp.vts.it/vts-dpp-rest-api
 
 # DPP
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Service Oriented Architecture specified for the DPP project.
 
-## Questions Collection [/questions]
 
-### List All Questions [GET]
+#######################
+# Group Vendor Link
+#######################
+
+## Vendor Link Collection [/dpdocuments]
+
+### List Vendor Links [GET /dpdocuments{?searchQuery,page,pageSize,sort,sortorder,report}]
+Search for links between vendors.
+
+This action is available only to **TODO** roles.
+
+Takes a `searchQuery` parameter object defined as follows
+<ul>
+  <li>code (optional,number) - id of the link between the two vendors? **TODO double-check**.</li>
+  <li>sreqid (optional,number) - id of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.</li>
+  <li>srecid (optional,number) - id of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.</li>
+  <li>sreqcode (optional,string) - master code of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.</li>
+  <li>sreccode (optional,string) - master code of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.</li>
+  <li>sreqname (optional,string) - name of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.</li>
+  <li>sreecname (optional,string) - name of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.</li>
+  <li>statusactive (optional,boolean) - whether the relationship is active or not? **TODO double-check**.</li>
+</ul>
+
++ Parameters
+  + searchQuery: {} (object, required) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + pageSize: 25 (optional, number) - Amount of results to return    
+  + sort: default (enum[string], optional) - Sorting field
+      + Members
+          + default
+          + svcreqcode
+          + svcreqname
+          + svcreccode
+          + svcrecname
+  + sortOrder: asc (enum, optional) - Sorting order
+      + Members
+          + asc
+          + desc
+  + report: SVCRCP (enum[string], optional) - Type of report (**throws error when invalid value**)
+      + Members
+          + SVCRCP
+          + PREVIEW
 
 + Response 200 (application/json)
+  + Attributes (VendorLinkSearchResult)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+### Create Vendor Link [POST]
+Creates a new link between vendors.
 
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+This action is available only to **TODO** role.
 
 + Request (application/json)
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+    + Attributes (VendorLinkInsert)
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /dpdocuments/123
+
+    + Attributes (VendorLink)
+
++ Response 400
+    Returned when the required resource cannot be found.
 
     + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+## Vendor Link [/dpdocuments/{id}]
+
++ Parameters
+  + id: 1 (required) - id of the requested link between vendors
+
++ Attributes (VendorLink)
+
+### Read Vendor Link [GET]
+Used to retrieve link between vendors detail.
+
+This action is available only to **TODO** role.
+
++ Response 200 (application/json)
+
+    + Attributes (VendorLink)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Update Vendor Link [PUT]
+Used to update link between vendors details.
+
+This action is available only to **TODO** role.
+
++ Parameters
+    + id: 1 (required, number) - id of the link between vendors
+
++ Request (application/json)
+  + Attributes (VendorLink1)
+
++ Response 200
+  + Attributes (VendorLink1)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Delete Vendor Link [DELETE]
+Used to delete a link between vendors.
+
+This action is available only to  **TODO** role.
+
++ Response 204
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+
+
+#######################
+# Data Structures
+#######################
+
+## PaginationData1
++ paginationData (object, required) - Informations required for pagination
+    + count: 3 (number,required) - total number of resources
+    + pageNum: 1 (number, required) - slice of resources returned
+    + pageSize: 25 (number, required) - size of the slice
+
+## VendorLinkSearchResult
++ results (array[VendorLink1, VendorLink2, VendorLink3], required) - array of links between vendors
++ Include PaginationData1
+
+## VendorLink1 (VendorLink)
++ id: 1 (number)
+
+## VendorLink2 (VendorLink)
++ id: 2 (number)
+
+## VendorLink3 (VendorLink)
++ id: 3 (number)
+
+## VendorLink (VendorLinkInsert)
++ id (number)- id of the link
+
+## VendorLinkInsert
++ vendor1 (Vendor1) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
++ vendor2 (Vendor2) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
++ status (LookupData) - When inserting, only the id is considered. 
++ notes - text up to 2000 characters long
+
+## Vendor1 (Vendor)
++ id: 1 (number)
+
+## Vendor2 (Vendor)
++ id: 2 (number)
+
+## Vendor
++ id (number)
++ name: A1 TELEKOM AUSTRIA AG
++ masterCode: 4000308
++ functionId: VMP_VND (enum)
+    + VMP_VND - Vendors
+    + VMP_SUB - Subcontractors
+    + DPP_SVCREC - Service recipients? **TODO double-check**.
+    + VMP_VTS - VTS? **TODO double-check**.
+
+## LookupData
++ id
++ description
