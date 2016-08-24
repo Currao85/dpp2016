@@ -5,6 +5,27 @@ HOST: http://emp.vts.it/vts-dpp-rest-api
 
 Service Oriented Architecture specified for the DPP project.
 
+#######################
+# Group Documents
+#######################
+
+## Documents Collection [/documents]
+
+### Document types [GET /documents/types{?searchQuery}]
+For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/documents-collection/document-types) documentation.
+
+`searchQuery` parameter accepts following function values: `DPP_DPDOCS`, `DPP_SVCREC`, `DPP_VTSEMP`, `VMP_VEMP`.
+
+## Function `Entity Types` [/functions]
+
+### Upload Document linking it to an entity [POST /functions/{functionId}/{entityId}/documents]
+For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/upload-document-linking-it-to-an-entity) documentation.
+
+### Download Document linked to an entity [GET /functions/{functionId}/{entityId}/documents/{id}]
+For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/download-document-linked-to-an-entity) documentation.
+
+### Delete document linked to an entity [DELETE /functions/{functionId}/{entityId}/documents/{id}]
+For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/delete-document-linked-to-an-entity) documentation.
 
 #######################
 # Group Vendor Link
@@ -18,21 +39,20 @@ Search for links between vendors.
 This action is available only to **TODO** roles.
 
 Takes a `searchQuery` parameter object defined as follows
-<ul>
-  <li>code (optional,number) - id of the link between the two vendors? **TODO double-check**.</li>
-  <li>sreqid (optional,number) - id of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.</li>
-  <li>srecid (optional,number) - id of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.</li>
-  <li>sreqcode (optional,string) - master code of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.</li>
-  <li>sreccode (optional,string) - master code of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.</li>
-  <li>sreqname (optional,string) - name of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.</li>
-  <li>sreecname (optional,string) - name of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.</li>
-  <li>statusactive (optional,boolean) - whether the relationship is active or not? **TODO double-check**.</li>
-</ul>
+* code (optional,number) - id of the link between the two vendors? **TODO double-check**.
+* sreqid (optional,number) - id of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.
+* srecid (optional,number) - id of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.
+* sreqcode (optional,string) - master code of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.
+* sreccode (optional,string) - master code of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.
+* sreqname (optional,string) - name of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.
+* sreecname (optional,string) - name of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.
+* statusactive (optional,boolean) - whether the relationship is active or not? **TODO double-check**.
+
 
 + Parameters
   + searchQuery: {} (object, required) - json filter
   + page: 1 (optional, number) - The page of results to return
-  + pageSize: 25 (optional, number) - Amount of results to return    
+  + pageSize: 25 (optional, number) - Amount of results to return
   + sort: default (enum[string], optional) - Sorting field
       + Members
           + default
@@ -163,8 +183,8 @@ Vendors classified as DPP_SVCREC will be returned.
 This action is available only to **TODO** role.
 
 ### Create Service Recipient [POST]
-Creates a service recipient. This action works exactly as [VMP Create Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor-collection/create-vendor), 
-with the only difference that it will fail if one tries to create a Vendor which is not classified as DPP_SVCREC. 
+Creates a service recipient. This action works exactly as [VMP Create Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor-collection/create-vendor),
+with the only difference that it will fail if one tries to create a Vendor which is not classified as DPP_SVCREC.
 
 **TODO: double-check, why this exists then?**
 
@@ -173,24 +193,24 @@ This action is available only to **TODO** role.
 ## Service Recipient [/servicerecipients/{id}]
 
 ### Read Service Recipient [GET]
-Reads a service recipient. This action works exactly as [VMP Read Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/read-vendor), 
-with the only difference that only Vendors classified as DPP_SVCREC will be returned. 
+Reads a service recipient. This action works exactly as [VMP Read Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/read-vendor),
+with the only difference that only Vendors classified as DPP_SVCREC will be returned.
 
 **TODO: double-check, why this exists then?**
 
 This action is available only to **TODO** role.
 
 ### Update Service Recipient [PUT]
-Updates a service recipient. This action works exactly as [VMP Update Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/update-vendor), 
-with the only difference that it will fail if one tries to update a Vendor which is not classified as DPP_SVCREC. 
+Updates a service recipient. This action works exactly as [VMP Update Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/update-vendor),
+with the only difference that it will fail if one tries to update a Vendor which is not classified as DPP_SVCREC.
 
 **TODO: double-check, why this exists then?**
 
 This action is available only to **TODO** role.
 
 ### Delete Service Recipient [DELETE]
-Deletes a service recipient. This action works exactly as [VMP Delete Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/delete-vendor), 
-with the only difference that it will fail if one tries to delete a Vendor which is not classified as DPP_SVCREC. 
+Deletes a service recipient. This action works exactly as [VMP Delete Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/delete-vendor),
+with the only difference that it will fail if one tries to delete a Vendor which is not classified as DPP_SVCREC.
 
 **TODO: double-check, why this exists then?**
 
@@ -225,7 +245,7 @@ This action is available only to **TODO** role.
 ## VendorLinkInsert
 + vendor1 (Vendor1) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
 + vendor2 (Vendor2) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
-+ status (LookupData) - When inserting, only the id is considered. 
++ status (LookupData) - When inserting, only the id is considered.
 + notes - text up to 2000 characters long
 
 ## Vendor1 (Vendor)
