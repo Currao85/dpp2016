@@ -3,7 +3,7 @@ HOST: http://emp.vts.it/vts-dpp-rest-api
 
 # DPP
 
-Service Oriented Architecture specified for the DPP project (1).
+Service Oriented Architecture specified for the DPP project.
 
 #######################
 # Group Documents
@@ -16,16 +16,24 @@ For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents
 
 `searchQuery` parameter accepts following function values: `DPP_DPDOCS`, `DPP_SVCREC`, `DPP_VTSEMP`, `VMP_VEMP`.
 
++ Response 200
+
 ## Function `Entity Types` [/functions]
 
 ### Upload Document linking it to an entity [POST /functions/{functionId}/{entityId}/documents]
 For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/upload-document-linking-it-to-an-entity) documentation.
 
++ Response 201
+
 ### Download Document linked to an entity [GET /functions/{functionId}/{entityId}/documents/{id}]
 For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/download-document-linked-to-an-entity) documentation.
 
++ Response 200
+
 ### Delete document linked to an entity [DELETE /functions/{functionId}/{entityId}/documents/{id}]
 For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/delete-document-linked-to-an-entity) documentation.
+
++ Response 204
 
 #######################
 # Group Vendor Link
