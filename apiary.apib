@@ -445,15 +445,74 @@ This action does not require authentication.
 ## VendorLinkTmp
 + status (StatusTmp) - temporary status
 
+##DocumentType1 (object)
++ id: 132
++ description: `DPL`
+
+##DocumentType2 (object)
++ id: 133
++ description: `IBM Checklist`
+
+##DocumentType3 (object)
++ id: 161
++ description: `Supplier questioinnaire`
+
+##FunctionDPD
++ id: `DPP_DPDOCS` (string, required) - function id
+
+## FileInfo1 (object)
++ id: 3220 (number) - file id
++ fileName: `New_sup_R&D_L.pdf` (string) - file name
++ description: `file desciption` (string) - file description
+
+## FileInfo2 (object)
++ id: 3221 (number) - file id
++ fileName: `report3.doc` (string) - file name
++ description: `file desciption` (string) - file description
+
+## FileInfo3 (object)
++ id: 3222 (number) - file id
++ fileName: `report.doc` (string) - file name
++ description: `file desciption` (string) - file description
+
+## DocumentInfo1 (object)
++ entityId: 1 (number, optional)
++ documentFile (FileInfo1) 
++ description: `New supplier R&D legal`
++ insertDate: `2016-02-06 10.50.30`
++ signingDate: `2016-02-06`
++ validityDate: `2016-02-06`
++ function (FunctionDPD)
++ docType (DocumentType1, required)
+
+## DocumentInfo2 (object)
++ entityId: 2 (number, optional)
++ documentFile (FileInfo2) 
++ description: `performance NTT Data Austria`
++ insertDate: `2016-02-08 10.50.30`
++ function (FunctionDPD)
++ docType (DocumentType2, required)
+
+## DocumentInfo3 (object)
++ entityId: 3 (number, optional)
++ documentFile (FileInfo3) 
++ description: `Supplier questioinnaire BRUTTI L`
++ insertDate: `2016-02-10 10.50.30`
++ signingDate: `2016-02-10`
++ function (FunctionDPD)
++ docType (DocumentType3, required)
+
 ## VendorLinkInquiry1
-+ vendorLink (VendorLink1) - DP document information
++ vendorLink (VendorLink1) - DP document link information
++ document (DocumentInfo1) - document information
 
 ## VendorLinkInquiry2
 + vendorLink (VendorLink2) - DP document information
++ document (DocumentInfo2) - document information
 
 ## VendorLinkInquiry3
-+ vendorLink (VendorLink2) - DP document information
-
++ vendorLink (VendorLink3) - DP document information
++ document (DocumentInfo3) - document information
 
 ## VendorLinkInquirySearchResult
 + results (array[VendorLinkInquiry1, VendorLinkInquiry2, VendorLinkInquiry3], required) - array of documents associated to dp document
