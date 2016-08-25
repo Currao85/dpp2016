@@ -336,26 +336,32 @@ This action does not require authentication.
 + id (number)- id of the link
 
 ## VendorLinkInsert
-+ vendor1 (Vendor1) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
-+ vendor2 (Vendor2) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
++ vendor1 (ServiceRequest1) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
++ vendor2 (ServiceRecipient1) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
 + status (LookupData) - When inserting, only the id is considered.
 + notes - text up to 2000 characters long
 
-## Vendor1 (Vendor)
-+ id: 1 (number)
+## ServiceRecipient1 (ServiceRecipient)
++ id: 188 (number)
 
-## Vendor2 (Vendor)
-+ id: 2 (number)
+## ServiceRequest1 (ServiceRequest)
++ id: 150 (number)
 
-## Vendor
+## ServiceRequest
 + id (number)
-+ name: A1 TELEKOM AUSTRIA AG
-+ masterCode: 4000308
++ name: Matrix tecnology 
++ masterCode: 4000047
 + functionId: VMP_VND (enum)
     + VMP_VND - Vendors
     + VMP_SUB - Subcontractors
-    + DPP_SVCREC - Service recipients? **TODO double-check**.
-    + VMP_VTS - VTS? **TODO double-check**.
+    + VMP_VTS - VTS
+
+## ServiceRecipient
++ id (number)
++ name: UNICREDIT SPA / ROMA / IT
++ masterCode: 4000308
++ functionId: DPP_SVCREC (enum)
+    + DPP_SVCREC - Service recipients
 
 ## LookupData
 + id
