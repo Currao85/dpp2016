@@ -41,7 +41,7 @@ For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents
 
 ## DP Document Collection [/dpdocuments]
 
-### List DP Document [GET /dpdocuments{?searchQuery,page,pageSize,sort,sortorder,report}]
+### List DP Document [GET /dpdocuments{?searchQuery,page,pageSize,sort,sortOrder}]
 Search for links between a service request (vendor/subcontractor/vts) and a service recipient.
 
 This action is available only to **TODO** roles.
@@ -65,18 +65,14 @@ Takes a `searchQuery` parameter object defined as follows
   + sort: default (enum[string], optional) - Sorting field
       + Members
           + default
-          + svcreqcode
-          + svcreqname
-          + svcreccode
-          + svcrecname
+          + sreqcode
+          + sreqname
+          + sreccode
+          + srecname
   + sortOrder: asc (enum, optional) - Sorting order
       + Members
           + asc
           + desc
-  + report: SVCRCP (enum[string], optional) - Type of report (**throws error when invalid value**)
-      + Members
-          + SVCRCP
-          + PREVIEW
 
 + Response 200 (application/json)
   + Attributes (VendorLinkSearchResult)
@@ -203,6 +199,43 @@ This action is available only to  **TODO** role.
 
     + Body
 
+## DP Document Inquiry [/dpdocuments/inquiry]
+
+### List DP Document Inquiry [GET /dpdocuments/inquiry{?searchQuery,page,pageSize,sort,sortOrder}]
+Search for documents associated to DP document  
+
+This action is available only to **TODO** roles.
+
+Takes a `searchQuery` parameter object defined as follows
+* code (optional,number) - id of the link between a service request and a service recipient 
+* sreqid (optional,number) - internal id of the service request (vendor/subcontractor/vts)
+* srecid (optional,number) - internal id of the service recipient 
+* sreqcode (optional,string) - master code of the service request (vendor/subcontractor/vts)
+* sreccode (optional,string) - master code of the service recipient
+* sreqname (optional,string) - name of the service request (vendor/subcontractor/vts)
+* srecname (optional,string) - name of the service recipient
+* sreqfunction (optional,string) - function id of the service request (VMP_VND or VMP_SUB or VMP_VTS) 
+* srecfunction (optional,string) - function id of the service recipient (DPP_SVCREC)
+
+
++ Parameters
+  + searchQuery: {} (object, required) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + pageSize: 25 (optional, number) - Amount of results to return
+  + sort: default (enum[string], optional) - Sorting field
+      + Members
+          + default
+          + sreqcode
+          + sreqname
+          + sreccode
+          + srecname
+  + sortOrder: asc (enum, optional) - Sorting order
+      + Members
+          + asc
+          + desc
+
++ Response 200 (application/json)
+  + Attributes (VendorLinkInquirySearchResult)
 
 
 #######################
@@ -336,6 +369,8 @@ This action does not require authentication.
 
 ## VendorLink3 (VendorLink)
 + id: 3 (number)
++ vendor1 (ServiceRequest3) 
++ vendor2 (ServiceRecipient3) 
 
 ## VendorLink (VendorLinkInsert)
 + id (number)- id of dp document aka link
@@ -356,6 +391,11 @@ This action does not require authentication.
 + name: UNICREDIT FACTORING SPA / MILANO / IT
 + masterCode: SR000188
 
+## ServiceRecipient3 (ServiceRecipient)
++ id: 985 (number)
++ name: CASSA DI RISPARMIO DI CESENA
++ masterCode: SR000985
+
 ## ServiceRequest1 (ServiceRequest)
 + id: 150 
 + name: Matrix tecnology 
@@ -365,6 +405,11 @@ This action does not require authentication.
 + id: 130 
 + name: COMAPP S.r.l. 
 + masterCode: 4000500
+
+## ServiceRequest3 (ServiceRequest)
++ id: 355 
++ name: NETEXPRESS GMBH
++ masterCode: 4000355
 
 ## ServiceRequest
 + id: 150 (number) - Service request internal code
@@ -399,3 +444,17 @@ This action does not require authentication.
 
 ## VendorLinkTmp
 + status (StatusTmp) - temporary status
+
+## VendorLinkInquiry1
++ vendorLink (VendorLink1) - DP document information
+
+## VendorLinkInquiry2
++ vendorLink (VendorLink2) - DP document information
+
+## VendorLinkInquiry3
++ vendorLink (VendorLink2) - DP document information
+
+
+## VendorLinkInquirySearchResult
++ results (array[VendorLinkInquiry1, VendorLinkInquiry2, VendorLinkInquiry3], required) - array of documents associated to dp document
++ Include PaginationData1
