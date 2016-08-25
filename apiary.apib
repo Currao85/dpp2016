@@ -325,9 +325,13 @@ This action does not require authentication.
 
 ## VendorLink1 (VendorLink)
 + id: 1 (number)
++ vendor1 (ServiceRequest1) 
++ vendor2 (ServiceRecipient1) 
 
 ## VendorLink2 (VendorLink)
 + id: 2 (number)
++ vendor1 (ServiceRequest2) 
++ vendor2 (ServiceRecipient2) 
 
 ## VendorLink3 (VendorLink)
 + id: 3 (number)
@@ -336,30 +340,44 @@ This action does not require authentication.
 + id (number)- id of the link
 
 ## VendorLinkInsert
-+ vendor1 (ServiceRequest1) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
-+ vendor2 (ServiceRecipient1) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
-+ status (LookupData) - When inserting, only the id is considered.
++ vendor1 (ServiceRequest) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
++ vendor2 (ServiceRecipient) - see [Vendor documentation](http://docs.vmp2016.apiary.io/#reference/vendor/vendor) for single fields. Notice that the Vendor returned here doesn't have all fields populated. When creating a new link, only the id is considered, but it must belong to an active vendor.
++ status (StatusActive) - When inserting, only the id is considered.
 + notes - text up to 2000 characters long
 
 ## ServiceRecipient1 (ServiceRecipient)
++ id: 144 (number)
++ name: CONSORZIO QUENIT
++ masterCode: SR000144
+
+## ServiceRecipient2 (ServiceRecipient)
 + id: 188 (number)
++ name: UNICREDIT FACTORING SPA / MILANO / IT
++ masterCode: SR000188
 
 ## ServiceRequest1 (ServiceRequest)
-+ id: 150 (number)
-
-## ServiceRequest
-+ id (number)
++ id: 150 
 + name: Matrix tecnology 
 + masterCode: 4000047
+
+## ServiceRequest2 (ServiceRequest)
++ id: 130 
++ name: COMAPP S.r.l. 
++ masterCode: 4000500
+
+## ServiceRequest
++ id (number) - Service request internal code
++ name (string) - Service request description 
++ masterCode (string) - Service request master code
 + functionId: VMP_VND (enum)
     + VMP_VND - Vendors
     + VMP_SUB - Subcontractors
     + VMP_VTS - VTS
 
 ## ServiceRecipient
-+ id (number)
-+ name: UNICREDIT SPA / ROMA / IT
-+ masterCode: 4000308
++ id (number) - Service recipient internal code
++ name (string) - Service recipient description 
++ masterCode (string) - Service recipient master code
 + functionId: DPP_SVCREC (enum)
     + DPP_SVCREC - Service recipients
 
@@ -370,6 +388,10 @@ This action does not require authentication.
 ## StatusTmp
 + id: TMP (string)
 + description : Temporary (string)
+
+## StatusActive
++ id: A (string)
++ description : Active (string)
 
 ## VendorLinkTmp1 (VendorLinkTmp)
 + id: 1 (number)
