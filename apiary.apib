@@ -36,25 +36,26 @@ For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents
 + Response 204
 
 #######################
-# Group DP Document (Vendor Link)
+# Group DP Document 
 #######################
 
 ## DP Document Collection [/dpdocuments]
 
-### List Vendor Links [GET /dpdocuments{?searchQuery,page,pageSize,sort,sortorder,report}]
+### List DP Document [GET /dpdocuments{?searchQuery,page,pageSize,sort,sortorder,report}]
 Search for links between a service request (vendor/subcontractor/vts) and a service recipient.
 
 This action is available only to **TODO** roles.
 
 Takes a `searchQuery` parameter object defined as follows
-* code (optional,number) - id of the link between the two vendors? **TODO double-check**.
-* sreqid (optional,number) - id of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.
-* srecid (optional,number) - id of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.
-* sreqcode (optional,string) - master code of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.
-* sreccode (optional,string) - master code of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.
-* sreqname (optional,string) - name of the vendor at one end of the relationship. **TODO double-check: vendor providing service?**.
-* sreecname (optional,string) - name of the vendor at the other end of the relationship. **TODO double-check: vendor receiving service?**.
-* statusactive (optional,boolean) - whether the relationship is active or not? **TODO double-check**.
+* code (optional,number) - id of the link between a service request and a service recipient 
+* sreqid (optional,number) - internal id of the service request (vendor/subcontractor/vts)
+* srecid (optional,number) - internal id of the service recipient 
+* sreqcode (optional,string) - master code of the service request (vendor/subcontractor/vts)
+* sreccode (optional,string) - master code of the service recipient
+* sreqname (optional,string) - name of the service request (vendor/subcontractor/vts)
+* srecname (optional,string) - name of the service recipient
+* sreqfunction (optional,string) - function id of the service request (VMP_VND or VMP_SUB or VMP_VTS) 
+* srecfunction (optional,string) - function id of the service recipient (DPP_SVCREC)
 
 
 + Parameters
