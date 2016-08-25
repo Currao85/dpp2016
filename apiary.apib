@@ -225,6 +225,61 @@ with the only difference that it will fail if one tries to delete a Vendor which
 This action is available only to **TODO** role.
 
 #######################
+# Group Lookup Lists
+#######################
+
+## DpDocument status collection [/lookup/dpdocumentstatus]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: A
+          + description: Active
+  + paginationData (object, required) - Informations required for pagination
+        + count: 1 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List DpDocument status [GET]
+
+The list of DpDocument status.
+
+This action does not require authentication.
+
++ Response 200 (application/json)
+  + Attributes (DpDocument status collection)
+
+## Service Recipient status collection [/lookup/servicerecipientstatus]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: A
+          + description: Active
+      + (object)
+          + id: B
+          + description: Blocked
+      + (object)
+          + id: M
+          + description: Marked for deletion
+  + paginationData (object, required) - Informations required for pagination
+        + count: 3 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List service recipient status [GET]
+
+The list of service recipient status.
+
+This action does not require authentication.
+
++ Response 200 (application/json)
+  + Attributes (Service Recipient status collection)
+
+
+#######################
 # Data Structures
 #######################
 
