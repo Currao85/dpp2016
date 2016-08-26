@@ -48,8 +48,8 @@ This action is available only to **TODO** roles.
 
 Takes a `searchQuery` parameter object defined as follows
 * code (optional,number) - id of the link between a service request and a service recipient 
-* sreqid (optional,number) - internal id of the service request (vendor/subcontractor/vts)
-* srecid (optional,number) - internal id of the service recipient 
+* sreqid (optional,string) - internal id of the service request (vendor/subcontractor/vts) (syntax for not equal is allowed)
+* srecid (optional,string) - internal id of the service recipient (syntax for not equal is allowed) 
 * sreqcode (optional,string) - master code of the service request (vendor/subcontractor/vts)
 * sreccode (optional,string) - master code of the service recipient
 * sreqname (optional,string) - name of the service request (vendor/subcontractor/vts)
@@ -77,7 +77,10 @@ Takes a `searchQuery` parameter object defined as follows
 + Response 200 (application/json)
   + Attributes (VendorLinkSearchResult)
 
-### Create DP Document [POST]
+### Create DP Document - DRAFT [POST]
+
+ **TODO maybe can be removed** 
+
 Creates a new link between service request and service recipient.
 
 This action is available only to **TODO** role.
@@ -106,7 +109,7 @@ This action is available only to **TODO** role.
 
 
 ### Create Temporary DP Document [POST /dpdocuments/temp]
-Creates a new temporary link between service request and service recipient.
+Creates a new temporary and incomplete link between service request and service recipient.
 
 This action is available only to **TODO** role.
 
@@ -209,8 +212,8 @@ This action is available only to **TODO** roles.
 
 Takes a `searchQuery` parameter object defined as follows
 * code (optional,number) - id of the link between a service request and a service recipient 
-* sreqid (optional,number) - internal id of the service request (vendor/subcontractor/vts)
-* srecid (optional,number) - internal id of the service recipient 
+* sreqid (optional,string) - internal id of the service request (vendor/subcontractor/vts) (syntax for not equal is allowed)
+* srecid (optional,string) - internal id of the service recipient (syntax for not equal is allowed) 
 * sreqcode (optional,string) - master code of the service request (vendor/subcontractor/vts)
 * sreccode (optional,string) - master code of the service recipient
 * sreqname (optional,string) - name of the service request (vendor/subcontractor/vts)
