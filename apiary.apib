@@ -16,27 +16,38 @@ For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents
 
 `searchQuery` parameter accepts following function values: `DPP_DPDOCS`, `DPP_SVCREC`, `DPP_VTSEMP`, `VMP_VEMP`.
 
+This action is available only to `DPP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, `DPP_CONTACT_READ`, `DPP_CONTRACT_READ`, `DPP_DOCUMENT_READ`, `DPP_SUBCONTRACTOR_READ` roles.
+
 + Response 200
 
 ## Function `Entity Types` [/functions]
 
 ### Upload Document linking it to an entity [POST /functions/{functionId}/{entityId}/documents]
+
+This action is available only to `DPP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_WRITE`, `DPP_CONTACT_WRITE`, `DPP_CONTRACT_WRITE`, `DPP_DOCUMENT_WRITE`, `DPP_SUBCONTRACTOR_WRITE` roles.
+
 For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/upload-document-linking-it-to-an-entity) documentation.
 
 + Response 201
 
 ### Download Document linked to an entity [GET /functions/{functionId}/{entityId}/documents/{id}]
+
+This action is available only to `DPP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, `DPP_CONTACT_READ`, `DPP_CONTRACT_READ`, `DPP_DOCUMENT_READ`, `DPP_SUBCONTRACTOR_READ` roles.
+
 For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/download-document-linked-to-an-entity) documentation.
 
 + Response 200
 
 ### Delete document linked to an entity [DELETE /functions/{functionId}/{entityId}/documents/{id}]
+
+This action is available only to `DPP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_WRITE`, `DPP_CONTACT_WRITE`, `DPP_CONTRACT_WRITE`, `DPP_DOCUMENT_WRITE`, `DPP_SUBCONTRACTOR_WRITE` roles.
+
 For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/delete-document-linked-to-an-entity) documentation.
 
 + Response 204
 
 #######################
-# Group DP Document 
+# Group DP Document
 #######################
 
 ## DP Document Collection [/dpdocuments]
@@ -44,17 +55,17 @@ For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents
 ### List DP Document [GET /dpdocuments{?searchQuery,page,pageSize,sort,sortOrder}]
 Search for links between a service request (vendor/subcontractor/vts) and a service recipient.
 
-This action is available only to **TODO** roles.
+This action is available only to `DPP_DP_DOCUMENT_READ` role.
 
 Takes a `searchQuery` parameter object defined as follows
-* code (optional,number) - id of the link between a service request and a service recipient 
+* code (optional,number) - id of the link between a service request and a service recipient
 * sreqid (optional,string) - internal id of the service request (vendor/subcontractor/vts) (syntax for not equal is allowed)
-* srecid (optional,string) - internal id of the service recipient (syntax for not equal is allowed) 
+* srecid (optional,string) - internal id of the service recipient (syntax for not equal is allowed)
 * sreqcode (optional,string) - master code of the service request (vendor/subcontractor/vts)
 * sreccode (optional,string) - master code of the service recipient
 * sreqname (optional,string) - name of the service request (vendor/subcontractor/vts)
 * srecname (optional,string) - name of the service recipient
-* sreqfunction (optional,string) - function id of the service request (VMP_VND or VMP_SUB or VMP_VTS) 
+* sreqfunction (optional,string) - function id of the service request (VMP_VND or VMP_SUB or VMP_VTS)
 * srecfunction (optional,string) - function id of the service recipient (DPP_SVCREC)
 
 
@@ -77,13 +88,11 @@ Takes a `searchQuery` parameter object defined as follows
 + Response 200 (application/json)
   + Attributes (VendorLinkSearchResult)
 
-### Create DP Document - DRAFT [POST]
-
- **TODO maybe can be removed** 
+### Create DP Document [POST]
 
 Creates a new link between service request and service recipient.
 
-This action is available only to **TODO** role.
+This action is available only to `DPP_DP_DOCUMENT_WRITE` role.
 
 + Request (application/json)
 
@@ -93,7 +102,7 @@ This action is available only to **TODO** role.
 
     + Headers
 
-            Location: /dpdocuments/1 
+            Location: /dpdocuments/1
 
     + Attributes (VendorLink1)
 
@@ -111,7 +120,7 @@ This action is available only to **TODO** role.
 ### Create Temporary DP Document [POST /dpdocuments/temp]
 Creates a new temporary and incomplete link between service request and service recipient.
 
-This action is available only to **TODO** role.
+This action is available only to `DPP_DP_DOCUMENT_WRITE` role.
 
 + Request (application/json)
 
@@ -145,7 +154,7 @@ This action is available only to **TODO** role.
 ### Read DP Document [GET]
 Used to retrieve link between service request and service recipient detail.
 
-This action is available only to **TODO** role.
+This action is available only to `DPP_DP_DOCUMENT_READ` role.
 
 + Response 200 (application/json)
 
@@ -164,7 +173,7 @@ This action is available only to **TODO** role.
 ### Update DP Document [PUT]
 Used to update link between service request and service recipient details.
 
-This action is available only to **TODO** role.
+This action is available only to `DPP_DP_DOCUMENT_WRITE` role.
 
 + Parameters
     + id: 1 (required, number) - id of the link between vendors
@@ -187,9 +196,9 @@ This action is available only to **TODO** role.
 
 ### Delete DP Document [DELETE]
 Used to delete a link between service request and service recipient.
-the link is permanently deleted with all associated documents 
+the link is permanently deleted with all associated documents
 
-This action is available only to  **TODO** role.
+This action is available only to `DPP_DP_DOCUMENT_WRITE` role.
 
 + Response 204
 
@@ -206,19 +215,19 @@ This action is available only to  **TODO** role.
 ## DP Document Inquiry [/dpdocuments/inquiry]
 
 ### List DP Document Inquiry [GET /dpdocuments/inquiry{?searchQuery,page,pageSize,sort,sortOrder}]
-Search for documents associated to DP document  
+Search for documents associated to DP document
 
-This action is available only to **TODO** roles.
+This action is available only to `DPP_DP_DOCUMENT_READ` role.
 
 Takes a `searchQuery` parameter object defined as follows
-* code (optional,number) - id of the link between a service request and a service recipient 
+* code (optional,number) - id of the link between a service request and a service recipient
 * sreqid (optional,string) - internal id of the service request (vendor/subcontractor/vts) (syntax for not equal is allowed)
-* srecid (optional,string) - internal id of the service recipient (syntax for not equal is allowed) 
+* srecid (optional,string) - internal id of the service recipient (syntax for not equal is allowed)
 * sreqcode (optional,string) - master code of the service request (vendor/subcontractor/vts)
 * sreccode (optional,string) - master code of the service recipient
 * sreqname (optional,string) - name of the service request (vendor/subcontractor/vts)
 * srecname (optional,string) - name of the service recipient
-* sreqfunction (optional,string) - function id of the service request (VMP_VND or VMP_SUB or VMP_VTS) 
+* sreqfunction (optional,string) - function id of the service request (VMP_VND or VMP_SUB or VMP_VTS)
 * srecfunction (optional,string) - function id of the service recipient (DPP_SVCREC)
 
 
@@ -254,17 +263,13 @@ Search for service recipients.
 This action works exactly as [VMP List Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor-collection/list-vendor), with the only difference that only
 Vendors classified as DPP_SVCREC will be returned.
 
-**TODO: double-check, why this exists then?**
-
-This action is available only to **TODO** role.
+This action is available only to `DPP_SERVICE_RECIPIENT_READ` role.
 
 ### Create Service Recipient [POST]
 Creates a service recipient. This action works exactly as [VMP Create Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor-collection/create-vendor),
 with the only difference that it will fail if one tries to create a Vendor which is not classified as DPP_SVCREC.
 
-**TODO: double-check, why this exists then?**
-
-This action is available only to **TODO** role.
+This action is available only to `DPP_SERVICE_RECIPIENT_WRITE` role.
 
 ## Service Recipient [/servicerecipients/{id}]
 
@@ -272,25 +277,19 @@ This action is available only to **TODO** role.
 Reads a service recipient. This action works exactly as [VMP Read Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/read-vendor),
 with the only difference that only Vendors classified as DPP_SVCREC will be returned.
 
-**TODO: double-check, why this exists then?**
-
-This action is available only to **TODO** role.
+This action is available only to `DPP_SERVICE_RECIPIENT_READ` role.
 
 ### Update Service Recipient [PUT]
 Updates a service recipient. This action works exactly as [VMP Update Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/update-vendor),
 with the only difference that it will fail if one tries to update a Vendor which is not classified as DPP_SVCREC.
 
-**TODO: double-check, why this exists then?**
-
-This action is available only to **TODO** role.
+This action is available only to `DPP_SERVICE_RECIPIENT_WRITE` role.
 
 ### Delete Service Recipient [DELETE]
 Deletes a service recipient. This action works exactly as [VMP Delete Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/delete-vendor),
 with the only difference that it will fail if one tries to delete a Vendor which is not classified as DPP_SVCREC.
 
-**TODO: double-check, why this exists then?**
-
-This action is available only to **TODO** role.
+This action is available only to `DPP_SERVICE_RECIPIENT_WRITE` role.
 
 #######################
 # Group Lookup Lists
@@ -363,18 +362,18 @@ This action does not require authentication.
 
 ## VendorLink1 (VendorLink)
 + id: 1 (number)
-+ vendor1 (ServiceRequest1) 
-+ vendor2 (ServiceRecipient1) 
++ vendor1 (ServiceRequest1)
++ vendor2 (ServiceRecipient1)
 
 ## VendorLink2 (VendorLink)
 + id: 2 (number)
-+ vendor1 (ServiceRequest2) 
-+ vendor2 (ServiceRecipient2) 
++ vendor1 (ServiceRequest2)
++ vendor2 (ServiceRecipient2)
 
 ## VendorLink3 (VendorLink)
 + id: 3 (number)
-+ vendor1 (ServiceRequest3) 
-+ vendor2 (ServiceRecipient3) 
++ vendor1 (ServiceRequest3)
++ vendor2 (ServiceRecipient3)
 
 ## VendorLink (VendorLinkInsert)
 + id (number)- id of dp document aka link
@@ -401,23 +400,23 @@ This action does not require authentication.
 + masterCode: SR000985
 
 ## ServiceRequest1 (ServiceRequest)
-+ id: 150 
-+ name: Matrix tecnology 
++ id: 150
++ name: Matrix tecnology
 + masterCode: 4000047
 
 ## ServiceRequest2 (ServiceRequest)
-+ id: 130 
-+ name: COMAPP S.r.l. 
++ id: 130
++ name: COMAPP S.r.l.
 + masterCode: 4000500
 
 ## ServiceRequest3 (ServiceRequest)
-+ id: 355 
++ id: 355
 + name: NETEXPRESS GMBH
 + masterCode: 4000355
 
 ## ServiceRequest
 + id: 150 (number) - Service request internal code
-+ name: Matrix tecnology  (string) - Service request description 
++ name: Matrix tecnology  (string) - Service request description
 + masterCode: 4000047 (string) - Service request master code
 + functionId: VMP_VND (enum)
     + VMP_VND - Vendors
@@ -426,7 +425,7 @@ This action does not require authentication.
 
 ## ServiceRecipient
 + id: 144 (number) - Service recipient internal code
-+ name: CONSORZIO QUENIT (string) - Service recipient description 
++ name: CONSORZIO QUENIT (string) - Service recipient description
 + masterCode: SR000144 (string) - Service recipient master code
 + functionId: DPP_SVCREC (enum)
     + DPP_SVCREC - Service recipients
@@ -481,7 +480,7 @@ This action does not require authentication.
 
 ## DocumentInfo1 (object)
 + entityId: 1 (number, optional)
-+ documentFile (FileInfo1) 
++ documentFile (FileInfo1)
 + description: `New supplier R&D legal`
 + insertDate: `2016-02-06 10.50.30`
 + signingDate: `2016-02-06`
@@ -491,7 +490,7 @@ This action does not require authentication.
 
 ## DocumentInfo2 (object)
 + entityId: 2 (number, optional)
-+ documentFile (FileInfo2) 
++ documentFile (FileInfo2)
 + description: `performance NTT Data Austria`
 + insertDate: `2016-02-08 10.50.30`
 + function (FunctionDPD)
@@ -499,7 +498,7 @@ This action does not require authentication.
 
 ## DocumentInfo3 (object)
 + entityId: 3 (number, optional)
-+ documentFile (FileInfo3) 
++ documentFile (FileInfo3)
 + description: `Supplier questioinnaire BRUTTI L`
 + insertDate: `2016-02-10 10.50.30`
 + signingDate: `2016-02-10`
