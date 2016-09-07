@@ -12,7 +12,7 @@ Service Oriented Architecture specified for the DPP project.
 ## Documents Collection [/documents]
 
 ### Document types [GET /documents/types{?searchQuery}]
-For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/documents-collection/document-types) documentation.
+For details see documentation for [VMP Project/Documents/Documents Collection/Document types]
 
 `searchQuery` parameter accepts following function values: `DPP_DPDOCS`, `DPP_SVCREC`, `DPP_VTSEMP`, `VMP_VEMP`.
 
@@ -26,7 +26,7 @@ This action is available only to `DPP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, 
 
 This action is available only to `DPP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_WRITE`, `DPP_CONTACT_WRITE`, `DPP_CONTRACT_WRITE`, `DPP_DOCUMENT_WRITE`, `DPP_SUBCONTRACTOR_WRITE`, `DPP_SERVICE_RECIPIENT_WRITE`, `DPP_DP_DOCUMENT_WRITE` roles.
 
-For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/upload-document-linking-it-to-an-entity) documentation.
+For details see documentation for [VMP Project/Documents/Documents Collection/Upload document linking it to an entity]
 
 + Response 201
 
@@ -34,7 +34,7 @@ For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents
 
 This action is available only to `DPP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, `DPP_CONTACT_READ`, `DPP_CONTRACT_READ`, `DPP_DOCUMENT_READ`, `DPP_SUBCONTRACTOR_READ`, `DPP_SERVICE_RECIPIENT_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
-For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/download-document-linked-to-an-entity) documentation.
+For details see documentation for [VMP Project/Documents/Documents Collection/Download document linked to an entity]
 
 + Response 200
 
@@ -42,7 +42,7 @@ For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents
 
 This action is available only to `DPP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_WRITE`, `DPP_CONTACT_WRITE`, `DPP_CONTRACT_WRITE`, `DPP_DOCUMENT_WRITE`, `DPP_SUBCONTRACTOR_WRITE`, `DPP_SERVICE_RECIPIENT_WRITE`, `DPP_DP_DOCUMENT_WRITE` roles.
 
-For details see [VMP Project](http://docs.vmp2016.apiary.io/#reference/documents/function-entity-types/delete-document-linked-to-an-entity) documentation.
+For details see documentation for [VMP Project/Documents/Documents Collection/Delete document linked to an entity]
 
 + Response 204
 
@@ -87,35 +87,6 @@ Takes a `searchQuery` parameter object defined as follows
 
 + Response 200 (application/json)
   + Attributes (VendorLinkSearchResult)
-
-### Create DP Document [POST]
-
-Creates a new link between service request and service recipient.
-
-This action is available only to `DPP_DP_DOCUMENT_WRITE` role.
-
-+ Request (application/json)
-
-    + Attributes (VendorLinkInsert)
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /dpdocuments/1
-
-    + Attributes (VendorLink1)
-
-+ Response 400
-    Returned when the required resource cannot be found.
-
-    + Body
-
-+ Response 500
-    Returned when a generic error occours.
-
-    + Body
-
 
 ### Create Temporary DP Document [POST /dpdocuments/temp]
 Creates a new temporary and incomplete link between service request and service recipient.
@@ -260,13 +231,13 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Service Recipients [GET /servicerecipients{?searchQuery,page,pageSize,sort,sortorder,report}]
 Search for service recipients.
 
-This action works exactly as [VMP List Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor-collection/list-vendor), with the only difference that only
+This action works exactly as [VMP Project/Vendor/Vendor collection/Vendor list], with the only difference that only
 Vendors classified as DPP_SVCREC will be returned.
 
 This action is available only to `DPP_SERVICE_RECIPIENT_READ` role.
 
 ### Create Service Recipient [POST]
-Creates a service recipient. This action works exactly as [VMP Create Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor-collection/create-vendor),
+Creates a service recipient. This action works exactly as [VMP Project/Vendor/Vendor collection/Create vendor],
 with the only difference that it will fail if one tries to create a Vendor which is not classified as DPP_SVCREC.
 
 This action is available only to `DPP_SERVICE_RECIPIENT_WRITE` role.
@@ -274,19 +245,19 @@ This action is available only to `DPP_SERVICE_RECIPIENT_WRITE` role.
 ## Service Recipient [/servicerecipients/{id}]
 
 ### Read Service Recipient [GET]
-Reads a service recipient. This action works exactly as [VMP Read Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/read-vendor),
+Reads a service recipient. This action works exactly as [VMP Project/Vendor/Vendor/Read vendor],
 with the only difference that only Vendors classified as DPP_SVCREC will be returned.
 
 This action is available only to `DPP_SERVICE_RECIPIENT_READ` role.
 
 ### Update Service Recipient [PUT]
-Updates a service recipient. This action works exactly as [VMP Update Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/update-vendor),
+Updates a service recipient. This action works exactly as [VMP Project/Vendor/Vendor/Update vendor],
 with the only difference that it will fail if one tries to update a Vendor which is not classified as DPP_SVCREC.
 
 This action is available only to `DPP_SERVICE_RECIPIENT_WRITE` role.
 
 ### Delete Service Recipient [DELETE]
-Deletes a service recipient. This action works exactly as [VMP Delete Vendor](http://docs.vmp2016.apiary.io/#reference/vendor/vendor/delete-vendor),
+Deletes a service recipient. This action works exactly as [VMP Project/Vendor/Vendor/Delete vendor],
 with the only difference that it will fail if one tries to delete a Vendor which is not classified as DPP_SVCREC.
 
 This action is available only to `DPP_SERVICE_RECIPIENT_WRITE` role.
